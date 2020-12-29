@@ -27,7 +27,7 @@ const TodoForm = ({ amountList, setAmountList, inputText, setInputText, inputAmo
             const list = { title, id, amount, savings };
             //console.log(list);
             await Axios.post(
-                "http://localhost:5000/expense/",
+                "https://teasy-backend.herokuapp.com/expense/",
                 list,
                 {
                     headers: {
@@ -65,7 +65,7 @@ const TodoForm = ({ amountList, setAmountList, inputText, setInputText, inputAmo
             const list = { title, id, amount, savings };
             //console.log(list);
             await Axios.post(
-                "http://localhost:5000/expense/",
+                "https://teasy-backend.herokuapp.com/expense/",
                 list,
                 {
                     headers: {

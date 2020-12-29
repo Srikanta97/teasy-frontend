@@ -18,7 +18,7 @@ const Main = () => {
         const loadFun = async () => {
             try {
                 await Axios.get(
-                    "http://localhost:5000/todos/all",
+                    "https://teasy-backend.herokuapp.com/todos/all",
                     {
                         headers: {
                             "Content-type": "application/json",

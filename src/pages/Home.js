@@ -18,7 +18,7 @@ const Home = () => {
         e.preventDefault();
         try {
             const loginRes = await Axios.post(
-                "http://localhost:5000/users/login",
+                "https://teasy-backend.herokuapp.com/users/login",
                 {
                     email, password
                 }

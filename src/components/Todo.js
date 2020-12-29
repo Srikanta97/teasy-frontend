@@ -7,7 +7,7 @@ const Todo = ({ title, todo, todos, setTodos }) => {
         e.preventDefault();
         try {
             await Axios.delete(
-                `http://localhost:5000/todos/${todo.id}`,
+                `https://teasy-backend.herokuapp.com/todos/${todo.id}`,
                 {
                     headers: {
                         "Content-type":"application/json",
@@ -31,7 +31,7 @@ const Todo = ({ title, todo, todos, setTodos }) => {
         e.preventDefault();
         try {
             await Axios.put(
-                `http://localhost:5000/todos/${todo.id}`, null,
+                `https://teasy-backend.herokuapp.com/todos/${todo.id}`, null,
                 {
                     headers: {
                         "Content-type":"application/json",

@@ -7,7 +7,7 @@ const ExpSav = ({ title, amount, amountList, setAmountList }) => {
         e.preventDefault();
         try {
             await Axios.delete(
-                `http://localhost:5000/expense/${amount.id}`,
+                `https://teasy-backend.herokuapp.com/expense/${amount.id}`,
                 {
                     headers: {
                         "Content-type":"application/json",

@@ -18,7 +18,7 @@ const TodoForm = ({ todos, setTodos, inputText, setInputText }) => {
             const todo = { title, id, completed };
             console.log(todo);
             await Axios.post(
-                "http://localhost:5000/todos/",
+                "https://teasy-backend.herokuapp.com/todos/",
                 todo,
                 {
                     headers: {
