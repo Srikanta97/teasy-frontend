@@ -47,7 +47,7 @@ const TodoForm = ({ todos, setTodos, inputText, setInputText }) => {
     return (
         <div style={{display:"flex", flexDirection:"column"}}>
             <form>
-                <input value={inputText} onChange={inputTextHandler} type="text" className="todo-input" />
+                <input placeholder="Eg: Iron clothes" value={inputText} onChange={inputTextHandler} type="text" className="todo-input" />
                 <button onClick={submitTodoHandler} className="todo-button" type="submit">
                     <i className="fas fa-plus-square"></i>
                 </button>

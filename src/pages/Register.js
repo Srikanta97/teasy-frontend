@@ -5,6 +5,9 @@ import Axios from 'axios';
 import UserContext from '../context/UserContext';
 import { useHistory } from 'react-router-dom';
 import ErrorNotice from '../components/ErrorNotice';
+import { motion } from 'framer-motion';
+import { pageAnimation } from "../animation";
+import { titleAnim } from "../animation";
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -43,8 +46,8 @@ const Register = () => {
         }
     };
     return (
-        <StyledDiv>
-            <img style={{marginRight:"1rem"}} src={SignUp} alt="Person with a computer" />
+        <StyledDiv variants={pageAnimation} initial="hidden" animate="show">
+            <motion.img variants={titleAnim} style={{paddingRight:"1rem"}} src={SignUp} alt="Person with a computer" />
             <StyledForm>
                 {error && (<ErrorNotice message={error} clearError={() => setError(undefined)} />)}
                 <input id="register-email" type="email" placeholder="Email"
@@ -61,12 +64,12 @@ const Register = () => {
     )
 }
 
-const StyledDiv = styled.div`
+const StyledDiv = styled(motion.div)`
     display: flex;
     padding: 5rem 10rem;
     justify-content: space-between;
     align-items: center;
-    height: 88vh;
+    min-height: 88vh;
 `;
 
 const StyledForm = styled.form`
@@ -79,9 +82,9 @@ const StyledForm = styled.form`
         background: #f0f4f8;
     };
     #button{
+        margin-top: 0.5rem;
         width: 20rem;
-        height: 2.6rem;
-        font-size: 1rem;
+        padding: 0.7rem 0rem;
     }
 `;
 

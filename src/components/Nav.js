@@ -31,7 +31,7 @@ const Nav = () => {
                             </button>
                             <button>
                                 <Link to="/dashboard">
-                                    Net Income
+                                    Compare
                                 </Link>
                             </button>
                         </li>
@@ -69,7 +69,7 @@ const StyledNav = styled.nav`
     background-color: #a2c4e7;
     display: flex;
     margin: auto;
-    padding: 1rem 10.5rem;
+    padding: 1rem 10rem;
     justify-content: space-between;
     align-items: center;
     a{

@@ -9,6 +9,7 @@ import Nav from './components/Nav';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import UserContext from './context/UserContext';
 import Axios from "axios";
+import { AnimatePresense } from 'framer-motion';
 
 const App = () => {
   const [userData, setUserData] = useState({

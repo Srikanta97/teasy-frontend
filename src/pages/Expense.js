@@ -5,6 +5,9 @@ import ExpenseForm from '../components/ExpenseForm';
 import ExpenseList from '../components/ExpenseList';
 import Picture from '../img/expense.png';
 import Axios from 'axios';
+import { pageAnimation } from "../animation";
+import { motion } from 'framer-motion';
+import { titleAnim } from "../animation";
 
 const Main = () => {
     const [inputText, setInputText] = useState("");
@@ -40,8 +43,16 @@ const Main = () => {
     },[]);
 
     return (
-        <div style={{display: "flex", margin: "4rem 8rem", justifyContent:"space-between", alignItems: "flex-start"}}>
-            <img style={{marginRight:"1rem"}} src = {Picture} alt="ToDo image" />
+        <motion.div style={
+            {
+                display: "flex",
+                margin: "4rem 8rem",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                minHeight: "88vh"
+            }
+        } variants={pageAnimation} initial="hidden" animate="show">
+            <motion.img variants={titleAnim} style={{marginRight:"1rem"}} src = {Picture} alt="Expense tracker" />
             <div>
                 <header>
                     <h1>
@@ -58,7 +69,7 @@ const Main = () => {
                 />
                 <ExpenseList amountList={amountList} setAmountList={setAmountList}/>
             </div>
-        </div>
+        </motion.div>
     )
 };
 

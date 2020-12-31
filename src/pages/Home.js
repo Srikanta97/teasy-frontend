@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import ErrorNotice from '../components/ErrorNotice';
+import { motion } from 'framer-motion';
+import { pageAnimation } from "../animation";
+import { titleAnim } from "../animation";
 
 const Home = () => {
     const { setUserData } = useContext(UserContext);
@@ -37,19 +40,19 @@ const Home = () => {
     return (
         <>
         {
-            <StyledAbout>
+            <StyledAbout variants={pageAnimation} initial="hidden" animate="show">
                 <div className="description">
-                    <div className="title">
+                    <motion.div className="title">
                         <StyledHide>
-                            <h2>Spend time</h2>
+                            <motion.h2 variants={titleAnim}>Spend time</motion.h2>
                         </StyledHide>
                         <StyledHide>
-                            <h2>on what really</h2>
+                            <motion.h2 variants={titleAnim}>on what really</motion.h2>
                         </StyledHide>
                         <StyledHide>
-                            <h2><span>MATTERS</span></h2>
+                            <motion.h2 variants={titleAnim}><span>MATTERS</span></motion.h2>
                         </StyledHide>
-                    </div>
+                    </motion.div>
                     <StyledThoughts>
                         <img src={thoughts} alt="logo" />
                         <p>
@@ -71,8 +74,8 @@ const Home = () => {
     )
 }
 
-const StyledAbout = styled.div`
-    min-height: 85vh;
+const StyledAbout = styled(motion.div)`
+    min-height: 88vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -84,7 +87,6 @@ const StyledThoughts = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 22rem;
     p{
         font-size: 1.4rem;
     }

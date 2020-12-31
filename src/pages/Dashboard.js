@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom';
 import Axios from 'axios';
 import { Bar } from 'react-chartjs-2';
 import Picture from '../img/savingsExp.png';
+import { pageAnimation } from "../animation";
+import { motion } from 'framer-motion';
+import { titleAnim } from "../animation";
 
 const Dashboard = () => {
 
@@ -73,21 +76,30 @@ const Dashboard = () => {
             {
                 label: "Savings vs Expense",
                 data: [totalSav, totalExp],
-                backgroundColor: ['#32cc65', '#e23232'],
+                backgroundColor: ['#2ac85f', '#e23232'],
             }
         ] 
     }
 
     return (
-        <div style={{display: "flex", margin: "4rem 8rem", marginBottom:"2rem", justifyContent:"space-between", alignItems: "flex-start"}}>
-            <img style={{marginRight:"1rem"}} src = {Picture} alt="ToDo image" />
+        <motion.div style={
+            {
+                display: "flex",
+                margin: "4rem 8rem",
+                marginBottom: "2rem",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                minHeight: "88vh"
+            }
+        } variants={pageAnimation} initial="hidden" animate="show">
+            <motion.img variants={titleAnim} style={{marginRight:"1rem"}} src = {Picture} alt="money plant" />
             <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
                 <header>
                     <h1>
                         Cash Flow
                     </h1>
                 </header>
-                <button ref={but} onClick={loadData}>See data</button>
+                <button ref={but} onClick={loadData}>Load</button>
                 <Bar 
                     data={data}
                     height={325}
@@ -113,7 +125,7 @@ const Dashboard = () => {
                     }}
                 />
             </div>
-        </div>
+        </motion.div>
     );
 }
 
