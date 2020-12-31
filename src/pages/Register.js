@@ -22,11 +22,11 @@ const Register = () => {
         try {
             const newUser = { email, password, passwordCheck, displayName };
             await Axios.post(
-                "https://teasy-backend.herokuapp.com/users/register",
+                "http://localhost:5000/users/register",
                 newUser
             );
             const loginRes = await Axios.post(
-                "https://teasy-backend.herokuapp.com/users/login",
+                "http://localhost:5000/users/login",
                 {
                     email, password
                 }
@@ -44,7 +44,7 @@ const Register = () => {
     };
     return (
         <StyledDiv>
-            <img src={SignUp} alt="Person with a computer" />
+            <img style={{marginRight:"1rem"}} src={SignUp} alt="Person with a computer" />
             <StyledForm>
                 {error && (<ErrorNotice message={error} clearError={() => setError(undefined)} />)}
                 <input id="register-email" type="email" placeholder="Email"
@@ -70,11 +70,8 @@ const StyledDiv = styled.div`
 `;
 
 const StyledForm = styled.form`
-    margin-left: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     input{
         margin-bottom: 1rem;
         width: 20rem;

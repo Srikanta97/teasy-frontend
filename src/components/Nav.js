@@ -19,7 +19,7 @@ const Nav = () => {
                 userData.user ?
                     <ul>
                         <li>
-                                <button>
+                            <button>
                                 <Link to="/main">
                                     Todo
                                 </Link>
@@ -29,14 +29,17 @@ const Nav = () => {
                                     Finance
                                 </Link>
                             </button>
+                            <button>
+                                <Link to="/dashboard">
+                                    Net Income
+                                </Link>
+                            </button>
                         </li>
-                        <li>
                             <button onClick={logout}>
                                 <Link to="/">
                                     Logout
                                 </Link>
                             </button>
-                        </li>
                     </ul>:
                     <ul>
                         <li>
@@ -62,10 +65,11 @@ const Nav = () => {
 
 const StyledNav = styled.nav`
     min-height: 10vh;
+    overflow: auto;
     background-color: #a2c4e7;
     display: flex;
     margin: auto;
-    padding: 1rem 10rem;
+    padding: 1rem 10.5rem;
     justify-content: space-between;
     align-items: center;
     a{
@@ -89,16 +93,12 @@ const StyledNav = styled.nav`
             font-size: 1.2rem;
         }
         padding: 0.5rem;
-        width: auto;
         &:hover{
             background: #2368a8;
             a{
                 color: #a2c4e7;
             };
         }
-    }
-    input{
-        margin: 0rem;
     }
 `;
 

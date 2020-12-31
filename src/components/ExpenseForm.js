@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Axios from 'axios';
+import ErrorNotice from './ErrorNotice';
 
 const TodoForm = ({ amountList, setAmountList, inputText, setInputText, inputAmount, setInputAmount }) => {
     let [id, setId] = useState("");
@@ -27,7 +28,7 @@ const TodoForm = ({ amountList, setAmountList, inputText, setInputText, inputAmo
             const list = { title, id, amount, savings };
             //console.log(list);
             await Axios.post(
-                "https://teasy-backend.herokuapp.com/expense/",
+                "http://localhost:5000/expense/",
                 list,
                 {
                     headers: {
@@ -42,7 +43,7 @@ const TodoForm = ({ amountList, setAmountList, inputText, setInputText, inputAmo
         catch (err) {
             err.response.data.msg && setError(err.response.data.msg);
         }
-        inputText.length > 0 ?
+        inputText.length > 0 && inputAmount.length > 0 ?
             setAmountList([
                 ...amountList, {
                     title,
@@ -65,7 +66,7 @@ const TodoForm = ({ amountList, setAmountList, inputText, setInputText, inputAmo
             const list = { title, id, amount, savings };
             //console.log(list);
             await Axios.post(
-                "https://teasy-backend.herokuapp.com/expense/",
+                "http://localhost:5000/expense/",
                 list,
                 {
                     headers: {
@@ -80,7 +81,7 @@ const TodoForm = ({ amountList, setAmountList, inputText, setInputText, inputAmo
         catch(err) {
             err.response.data.msg && setError(err.response.data.msg);
         }
-        inputText.length > 0 ?
+        inputText.length > 0 && inputAmount.length > 0 ?
         setAmountList([
             ...amountList,{
                 title,
@@ -94,16 +95,19 @@ const TodoForm = ({ amountList, setAmountList, inputText, setInputText, inputAmo
     }
 
     return (
-        <form>
-            <input value={inputText} onChange={inputTextHandler} type="text" className="todo-input" />
-            <input value={inputAmount} onChange={inputAmountHandler} type="number" style={{width: "7rem"}} />
-            <button onClick={submitSavingsHandler} className="todo-button" type="submit">
-                <i className="fas fa-plus-square"></i>
-            </button>
-            <button onClick={submitExpenseHandler} className="todo-button" type="submit">
-                <i className="fas fa-minus-square"></i>
-            </button>
-        </form>
+        <div style={{display:"flex", flexDirection:"column"}}>
+            <form>
+                <input placeholder="Eg: Newspaper" value={inputText} onChange={inputTextHandler} type="text" className="todo-input" />
+                <input placeholder="Amt" value={inputAmount} onChange={inputAmountHandler} type="number" style={{width: "7rem"}} />
+                <button onClick={submitSavingsHandler} className="todo-button" type="submit">
+                    <i className="fas fa-plus-square"></i>
+                </button>
+                <button onClick={submitExpenseHandler} className="todo-button" type="submit">
+                    <i className="fas fa-minus-square"></i>
+                </button>
+            </form>
+            {error && (<ErrorNotice message={error} clearError={() => setError(undefined)} />)}
+        </div>
     )
 }
 

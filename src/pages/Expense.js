@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import '../todo.css';
 import ExpenseForm from '../components/ExpenseForm';
 import ExpenseList from '../components/ExpenseList';
+import Picture from '../img/expense.png';
 import Axios from 'axios';
 
 const Main = () => {
@@ -19,7 +20,7 @@ const Main = () => {
         const loadFun = async () => {
             try {
                 await Axios.get(
-                    "https://teasy-backend.herokuapp.com/expense/all",
+                    "http://localhost:5000/expense/all",
                     {
                         headers: {
                             "Content-type": "application/json",
@@ -39,21 +40,24 @@ const Main = () => {
     },[]);
 
     return (
-        <div className="App">
-            <header>
-                <h1>
-                       Expense Tracker
-                </h1>
-            </header>
-            <ExpenseForm
-                amountList={amountList}
-                setAmountList={setAmountList}
-                inputText={inputText}
-                setInputText={setInputText}
-                inputAmount={inputAmount}
-                setInputAmount={setInputAmount}
-            />
-            <ExpenseList amountList={amountList} setAmountList={setAmountList}/>
+        <div style={{display: "flex", margin: "4rem 8rem", justifyContent:"space-between", alignItems: "flex-start"}}>
+            <img style={{marginRight:"1rem"}} src = {Picture} alt="ToDo image" />
+            <div>
+                <header>
+                    <h1>
+                        Expense Tracker
+                    </h1>
+                </header>
+                <ExpenseForm
+                    amountList={amountList}
+                    setAmountList={setAmountList}
+                    inputText={inputText}
+                    setInputText={setInputText}
+                    inputAmount={inputAmount}
+                    setInputAmount={setInputAmount}
+                />
+                <ExpenseList amountList={amountList} setAmountList={setAmountList}/>
+            </div>
         </div>
     )
 };

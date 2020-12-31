@@ -7,7 +7,7 @@ const Todo = ({ title, todo, todos, setTodos }) => {
         e.preventDefault();
         try {
             await Axios.delete(
-                `https://teasy-backend.herokuapp.com/todos/${todo.id}`,
+                `http://localhost:5000/todos/${todo.id}`,
                 {
                     headers: {
                         "Content-type":"application/json",
@@ -31,7 +31,7 @@ const Todo = ({ title, todo, todos, setTodos }) => {
         e.preventDefault();
         try {
             await Axios.put(
-                `https://teasy-backend.herokuapp.com/todos/${todo.id}`, null,
+                `http://localhost:5000/todos/${todo.id}`, null,
                 {
                     headers: {
                         "Content-type":"application/json",
@@ -57,7 +57,7 @@ const Todo = ({ title, todo, todos, setTodos }) => {
     }
     return (
         <div className="todo">
-            <li className={`todo-item ${todo.completed ? "completed" : ""}`}>{title}</li>
+            <li style={{display:"block", width:"30rem" }} className={`todo-item ${todo.completed ? "completed" : ""}`}>{title}</li>
             <button onClick={updateHandler} className="complete-btn"><i className="fas fa-check"></i></button>
             <button onClick={deleteTodoHandler} className="trash-btn"><i className="fas fa-trash"></i></button>       
         </div>

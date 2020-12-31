@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import '../todo.css';
 import TodoForm from '../components/TodoForm';
 import TodoList from '../components/TodoList';
+import Picture from '../img/todo.png';
 import Axios from 'axios';
 
 const Main = () => {
@@ -18,7 +19,7 @@ const Main = () => {
         const loadFun = async () => {
             try {
                 await Axios.get(
-                    "https://teasy-backend.herokuapp.com/todos/all",
+                    "http://localhost:5000/todos/all",
                     {
                         headers: {
                             "Content-type": "application/json",
@@ -38,14 +39,17 @@ const Main = () => {
         loadFun();
     },[]);
     return (
-        <div className="App">
-            <header>
-                <h1>
-                       Todo List
-                </h1>
-            </header>
-            <TodoForm todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} />
-            <TodoList todos={todos} setTodos={setTodos}/>
+        <div style={{display: "flex", margin: "4rem 8rem", justifyContent:"space-between", alignItems: "flex-start"}}>
+            <img style={{marginRight:"1rem"}} src = {Picture} alt="ToDo image" />
+            <div>
+                <header>
+                    <h1>
+                        Todo List
+                    </h1>
+                </header>
+                <TodoForm todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} />
+                <TodoList todos={todos} setTodos={setTodos}/>
+            </div>
         </div>
     )
 };

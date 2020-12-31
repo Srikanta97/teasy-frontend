@@ -18,7 +18,7 @@ const Home = () => {
         e.preventDefault();
         try {
             const loginRes = await Axios.post(
-                "https://teasy-backend.herokuapp.com/users/login",
+                "http://localhost:5000/users/login",
                 {
                     email, password
                 }
@@ -57,7 +57,7 @@ const Home = () => {
                         </p>
                     </StyledThoughts>
                 </div>
-                    <StyledCredentials>
+                <StyledCredentials>
                     {error && (<ErrorNotice message={error} clearError={() => setError(undefined)} />)}
                     <form>
                         <input onChange={(e) => { setEmail(e.target.value) }} type="text" placeholder="Username" />

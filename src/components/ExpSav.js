@@ -7,7 +7,7 @@ const ExpSav = ({ title, amount, amountList, setAmountList }) => {
         e.preventDefault();
         try {
             await Axios.delete(
-                `https://teasy-backend.herokuapp.com/expense/${amount.id}`,
+                `http://localhost:5000/expense/${amount.id}`,
                 {
                     headers: {
                         "Content-type":"application/json",
@@ -30,10 +30,10 @@ const ExpSav = ({ title, amount, amountList, setAmountList }) => {
     return (
         <div className="todo">
             <li style={{display:"flex", justifyContent:"space-between"}} >
-                <div style={{fontWeight:"normal"}} className={`todo-item ${amount.savings === "expenditure" ? "expense" : ""}`}>{title}</div>
-                <div style={{marginRight:"1rem"}} className={`todo-item ${amount.savings === "expenditure" ? "expense" : ""}`}>{amount.amount}</div>
+                <div style={{fontWeight:"normal"}} className={`todo-item ${amount.savings === "expenditure" ? "expButton" : ""}`}>{title}</div>
+                <div style={{marginRight:"1rem"}} className={`todo-item ${amount.savings === "expenditure" ? "expButton" : ""}`}>{amount.amount}</div>
             </li>
-            <button onClick={deleteExpenseHandler} className={`trash-btn ${amount.savings === "expenditure" ? "expense" : ""}`}><i className="fas fa-trash "></i></button>       
+            <button onClick={deleteExpenseHandler} className={`trash-btn ${amount.savings === "expenditure" ? "expButton" : ""}`}><i className="fas fa-trash"></i></button>       
         </div>
     )
 }

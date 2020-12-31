@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Main from './pages/Main';
 import Expense from './pages/Expense';
+import Dashboard from './pages/Dashboard';
 import GlobalStyle from './components/GlobalStyle';
 import Nav from './components/Nav';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -57,6 +58,7 @@ const App = () => {
               <Route path="/login" component={Home} exact />
               <Route path="/main" component={Main} exact />
               <Route path="/expense" component={Expense} exact />
+              <Route path="/dashboard" component={Dashboard} exact />
             </Switch>
           </UserContext.Provider>
         </BrowserRouter>
